@@ -5,18 +5,19 @@ var ani = "Down"
 var dir = Vector2(0,0) # Vector2.ZERO
 var hitted = false
 var isAtacking = false
-var vida = 3
+export var max_life = 4
+var vida
+onready var lifebar = $ColorRect
 signal death
 
 func _ready():
-	pass
+	vida = max_life
 
 func _physics_process(delta):
 	if Input.is_action_pressed("ui_accept") and !isAtacking:
 		aniSwitch("A")
 		isAtacking = true
-		yield(get_tree().create_timer(0.6),"timeout")
-		
+		yield(get_tree().create_timer(0.2),"timeout")
 		isAtacking = false
 		return
 		
@@ -64,19 +65,17 @@ func aniSwitch(type):
 	var anita = str(type,ani)
 	if $AniPlayer.current_animation != anita:
 		$AniPlayer.play(anita)
-		yield($AniPlayer,"animation_finished")
+		#yield($AniPlayer,"animation_finished")
 	
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("enemy"):
-		if vida>=0:
+		vida-=body.DAMAGE
+		if vida>0:
 			hitted=true
-			#print(vida)
-			$ColorRect.rect_size.x -= 4.8
+			$ColorRect.rect_size.x -= (4.8*body.DAMAGE)
 			var knockback = transform.origin-body.transform.origin 
 			move_and_slide(knockback.normalized()*velocity*10,Vector2.ZERO)
-			vida-=1
-			
 		else:
 			emit_signal("death")
 			queue_free()

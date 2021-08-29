@@ -1,17 +1,16 @@
 extends Node2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 signal gameovercito
 const Player = preload("res://Nodes/Player.tscn")
 const tronquito = preload("res://Nodes/Tronquito.tscn")
+const lifeUp = preload("res://Nodes/Items/LifeUp.tscn")
 var jugadorl
+var winTimes = 0
 var lose = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	setWaveLabel()
 	initPlayer()
 	initTronquitos()
 	
@@ -19,19 +18,26 @@ func _ready():
 func _process(delta):
 	pass# Replace with function body.
 	
-func gameover():
-	print(get_tree().get_nodes_in_group("enemy").size())
-	
+func gameover(tronsition):
 	if get_tree().get_nodes_in_group("enemy").size() <=1:
-		$CanvasLayer/AnimationPlayer.play("gameover")
-		print("game over")
+		#$CanvasLayer/AnimationPlayer.play("gameover")
+		winTimes+=1
+		jugadorl.position = Vector2(240,122)
+		setWaveLabel()
+		initTronquitos()
+	else:
+		var rand = randi() % 4
+		print(rand)
+		if rand == 1:
+			var life = lifeUp.instance()
+			life.position = tronsition
+			$YSort.add_child(life)
 
 func deathcito():
 	$CanvasLayer/AnimationPlayer.play("Death")
 	lose = true
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func setWaveLabel():
+	$CanvasLayer/WaveLabel.text = str("Wave: ",str(winTimes+1))
 func initPlayer():
 	jugadorl = Player.instance()
 	jugadorl.position = Vector2(240,122)
@@ -43,6 +49,7 @@ func initTronquitos():
 	for x in positions.size():
 		var tronquitont = tronquito.instance()
 		tronquitont.position = positions[x]
+		tronquitont.upDificulty(winTimes)
 		$YSort.add_child(tronquitont)
 		tronquitont.connect("gameovercito",self,"gameover")
 	
@@ -55,9 +62,12 @@ func _on_Button_pressed():
 	if lose:
 		$CanvasLayer/AnimationPlayer.play_backwards("Death")
 		dropTodo()
+		winTimes = 0
+		setWaveLabel()
+		initPlayer()
 	else:
 		$CanvasLayer/AnimationPlayer.play_backwards("gameover")
-		jugadorl.queue_free()
-	initPlayer()
+		jugadorl.set_physics_process(true)
+		setWaveLabel()
 	initTronquitos()
 	lose = false

@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Assets/character.png" type="Texture" id=1]
 [ext_resource path="res://Nodes/Player.gd" type="Script" id=2]
+[ext_resource path="res://Nodes/Weapons/Espada.tscn" type="PackedScene" id=3]
 
-[sub_resource type="Shader" id=10]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
 uniform float hit_opacity = 0;
@@ -13,16 +14,16 @@ void fragment(){
  COLOR.a = texture(TEXTURE, UV).a; 
 }"
 
-[sub_resource type="ShaderMaterial" id=11]
-shader = SubResource( 10 )
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
 shader_param/hit_opacity = 0.0
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 5.47127, 5.77468 )
 
-[sub_resource type="Animation" id=1]
-resource_name = "ADown"
-length = 0.6
+[sub_resource type="Animation" id=4]
+length = 0.2
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -30,7 +31,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3, 0.5 ),
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 32, 33, 34, 35 ]
@@ -66,10 +67,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.05, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, -47.5, -90.4, -90.4 ]
+"values": [ 0.0, -47.5, -90.4 ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Espada/CollisionPolygon2D:position")
@@ -78,10 +79,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.05, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( -2.284, 5.157 ), Vector2( 1.098, 6.132 ), Vector2( 1.098, 6.132 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( -2.284, 5.157 ), Vector2( 1.098, 6.132 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("Espada/CollisionPolygon2D:disabled")
@@ -90,15 +91,15 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.6 ),
+"times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "ALeft"
-length = 0.6
+[sub_resource type="Animation" id=5]
+length = 0.2
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -106,7 +107,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3, 0.5 ),
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 56, 57, 58, 59 ]
@@ -142,7 +143,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.2, 0.6 ),
+"times": PoolRealArray( 0, 0.05, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( -3.517, 2.996 ), Vector2( -5.593, 0.098 ), Vector2( -2.236, -0.707 ) ]
@@ -154,7 +155,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.2, 0.6 ),
+"times": PoolRealArray( 0, 0.05, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ -48.9, 1.9, 46.9 ]
@@ -166,15 +167,15 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.6 ),
+"times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "ARight"
-length = 0.6
+[sub_resource type="Animation" id=6]
+length = 0.2
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -182,7 +183,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3, 0.5 ),
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 48, 49, 50, 51 ]
@@ -218,7 +219,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.2, 0.6 ),
+"times": PoolRealArray( 0, 0.05, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ -134.3, -179.2, -225.2 ]
@@ -230,7 +231,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.2, 0.6 ),
+"times": PoolRealArray( 0, 0.05, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0.417, 6.724 ), Vector2( 4.076, 6.724 ), Vector2( 4.158, 3.809 ) ]
@@ -242,15 +243,15 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.6 ),
+"times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "AUp"
-length = 0.6
+[sub_resource type="Animation" id=7]
+length = 0.2
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -258,7 +259,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3, 0.5 ),
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 40, 41, 42, 43 ]
@@ -294,7 +295,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.6 ),
+"times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -306,7 +307,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.2, 0.6 ),
+"times": PoolRealArray( 0, 0.05, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1.518, 6.946 ), Vector2( 4.657, 2.017 ), Vector2( 1.944, -1.202 ) ]
@@ -318,13 +319,13 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.2, 0.6 ),
+"times": PoolRealArray( 0, 0.05, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ -180.2, -223.7, -270.5 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=8]
 resource_name = "Hitted"
 length = 0.5
 loop = true
@@ -341,7 +342,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=9]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -381,7 +382,7 @@ tracks/2/keys = {
 "values": [ 8 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=10]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -421,7 +422,7 @@ tracks/2/keys = {
 "values": [ 8 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=11]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -461,7 +462,7 @@ tracks/2/keys = {
 "values": [ 8 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=12]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -501,28 +502,20 @@ tracks/2/keys = {
 "values": [ 8 ]
 }
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=[
+"player",
+]]
 script = ExtResource( 2 )
+max_life = 5
 
 [node name="Sprite" type="Sprite" parent="."]
-material = SubResource( 11 )
+material = SubResource( 2 )
 texture = ExtResource( 1 )
 hframes = 8
 vframes = 8
-frame = 41
+frame = 43
 
-[node name="Espada" type="KinematicBody2D" parent="." groups=[
-"putazo",
-]]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Espada"]
-light_mask = 2
-position = Vector2( 4.3095, 1.60469 )
-rotation = -4.00892
-polygon = PoolVector2Array( -1.57431, 2.07198, -1.57431, 4.72363, -11.0319, 4.63525, -11.0319, 2.16037 )
-disabled = true
+[node name="Espada" parent="." instance=ExtResource( 3 )]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( -0.0701561, 2.37085 )
@@ -533,18 +526,18 @@ polygon = PoolVector2Array( -6.94059, 5.59378, -9.15469, 6.94721, -6.84432, 8.39
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( -0.210464, 5.12122 )
-shape = SubResource( 9 )
+shape = SubResource( 3 )
 
 [node name="AniPlayer" type="AnimationPlayer" parent="."]
-anims/ADown = SubResource( 1 )
-anims/ALeft = SubResource( 2 )
-anims/ARight = SubResource( 3 )
-anims/AUp = SubResource( 4 )
-anims/Hitted = SubResource( 12 )
-anims/WDown = SubResource( 5 )
-anims/WLeft = SubResource( 6 )
-anims/WRight = SubResource( 7 )
-anims/WUp = SubResource( 8 )
+anims/ADown = SubResource( 4 )
+anims/ALeft = SubResource( 5 )
+anims/ARight = SubResource( 6 )
+anims/AUp = SubResource( 7 )
+anims/Hitted = SubResource( 8 )
+anims/WDown = SubResource( 9 )
+anims/WLeft = SubResource( 10 )
+anims/WRight = SubResource( 11 )
+anims/WUp = SubResource( 12 )
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 margin_left = -11.8259
