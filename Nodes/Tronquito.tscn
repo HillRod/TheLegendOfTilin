@@ -7,7 +7,6 @@
 [sub_resource type="Animation" id=1]
 resource_name = "Det"
 length = 1.2
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite2:visible")
 tracks/0/interp = 1
@@ -126,7 +125,7 @@ tracks/0/keys = {
 "values": [ 6, 7, 8, 9 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 resource_name = "prepareto"
 length = 0.5
 tracks/0/type = "value"
@@ -142,7 +141,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.87451, 0.25098, 0.25098, 1 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 resource_name = "Det"
 length = 1.2
 loop = true
@@ -183,7 +182,7 @@ tracks/2/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=9]
 resource_name = "Verguiade"
 length = 0.5
 loop = true
@@ -200,7 +199,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=10]
 length = 0.7
 loop = true
 tracks/0/type = "value"
@@ -216,7 +215,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=11]
 length = 0.7
 loop = true
 tracks/0/type = "value"
@@ -232,7 +231,7 @@ tracks/0/keys = {
 "values": [ 12, 13, 14, 15 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=12]
 length = 0.7
 loop = true
 tracks/0/type = "value"
@@ -248,7 +247,7 @@ tracks/0/keys = {
 "values": [ 18, 19, 20, 21 ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=13]
 length = 0.7
 loop = true
 tracks/0/type = "value"
@@ -264,11 +263,11 @@ tracks/0/keys = {
 "values": [ 6, 7, 8, 9 ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=14]
 resource_name = "prepareto"
 length = 0.3
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
+tracks/0/path = NodePath("Sprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -277,10 +276,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 0.87451, 0.25098, 0.25098, 1 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.0627451, 0.439216, 0.0941176, 1 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 5.88518, 10 )
 
 [node name="Tronquito" type="KinematicBody2D" groups=[
@@ -292,7 +291,6 @@ script = ExtResource( 2 )
 texture = ExtResource( 1 )
 hframes = 6
 vframes = 4
-frame = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( -4.59517, 11.0907, -4.70653, 7.63849, 4.87063, 7.63849, 4.64791, 11.2021 )
@@ -304,16 +302,16 @@ anims/WDown = SubResource( 3 )
 anims/WLeft = SubResource( 4 )
 anims/WRight = SubResource( 5 )
 anims/WUp = SubResource( 6 )
-anims/prepareto = SubResource( 8 )
+anims/prepareto = SubResource( 7 )
 
 [node name="Effects" type="AnimationPlayer" parent="."]
-anims/Det = SubResource( 9 )
-anims/Verguiade = SubResource( 10 )
-anims/WDown = SubResource( 11 )
-anims/WLeft = SubResource( 12 )
-anims/WRight = SubResource( 13 )
-anims/WUp = SubResource( 14 )
-anims/prepareto = SubResource( 15 )
+anims/Det = SubResource( 8 )
+anims/Verguiade = SubResource( 9 )
+anims/WDown = SubResource( 10 )
+anims/WLeft = SubResource( 11 )
+anims/WRight = SubResource( 12 )
+anims/WUp = SubResource( 13 )
+anims/prepareto = SubResource( 14 )
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
@@ -321,7 +319,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( -0.0589905, 1.65178 )
-shape = SubResource( 7 )
+shape = SubResource( 15 )
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 margin_left = -11.8259
@@ -350,6 +348,7 @@ hframes = 12
 
 [node name="cooldown" type="Timer" parent="."]
 wait_time = 3.0
+autostart = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]

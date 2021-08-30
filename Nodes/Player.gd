@@ -70,13 +70,20 @@ func aniSwitch(type):
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("enemy"):
-		vida-=body.DAMAGE
-		if vida>0:
-			hitted=true
-			$ColorRect.rect_size.x -= (4.8*body.DAMAGE)
-			var knockback = transform.origin-body.transform.origin 
-			move_and_slide(knockback.normalized()*velocity*10,Vector2.ZERO)
-		else:
-			emit_signal("death")
-			queue_free()
+		damage(body)
 
+func damage(body):
+	vida-=body.DAMAGE
+	if vida>0:
+		hitted=true
+		$ColorRect.rect_size.x -= (4.8*body.DAMAGE)
+		var knockback = transform.origin-body.transform.origin 
+		move_and_slide(knockback.normalized()*velocity*10,Vector2.ZERO)
+	else:
+		emit_signal("death")
+		queue_free()
+
+
+func _on_Area2D_area_entered(area):
+	if area.is_in_group("enemy"):
+		damage(area)

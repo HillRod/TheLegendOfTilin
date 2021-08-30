@@ -1,21 +1,29 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Assets/fireball/FB005.png" type="Texture" id=1]
-[ext_resource path="res://Assets/fireball/FB003.png" type="Texture" id=2]
-[ext_resource path="res://Assets/fireball/FB002.png" type="Texture" id=3]
-[ext_resource path="res://Assets/fireball/FB004.png" type="Texture" id=4]
-[ext_resource path="res://Assets/fireball/FB001.png" type="Texture" id=5]
+[ext_resource path="res://Nodes/Projectiles/greenshot.png" type="Texture" id=1]
 [ext_resource path="res://Nodes/Projectiles/Flame.gd" type="Script" id=6]
 
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 1 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
+[sub_resource type="CircleShape2D" id=6]
+radius = 4.45646
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
+resource_name = "Shoot"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+
+[sub_resource type="Animation" id=2]
 resource_name = "ShootDown"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
@@ -54,7 +62,7 @@ tracks/2/keys = {
 "values": [ 90.0 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "ShootLeft"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
@@ -93,8 +101,7 @@ tracks/2/keys = {
 "values": [ -180.0 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "ShootRight"
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
@@ -171,21 +178,48 @@ tracks/2/keys = {
 "values": [ -90.0 ]
 }
 
-[node name="Flame" type="KinematicBody2D" groups=[
+[sub_resource type="Animation" id=7]
+resource_name = "Det"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
+}
+
+[node name="Flame" type="Area2D" groups=[
 "enemy",
 ]]
 script = ExtResource( 6 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 1 )
-frame = 3
-playing = true
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 5
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( 14.4547, -8.59437, 17.8763, -6.35267, 19.4101, -3.52104, 18.4662, 1.67027, 13.9828, 5.32778, 7.13971, 3.79398, 4.89801, 1.08035, 4.46279, -3.5117, 5.13398, -7.29654, 10.6792, -8.59437 )
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
+position = Vector2( 2.94397, 0.0402564 )
+shape = SubResource( 6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/ShootDown = SubResource( 3 )
-anims/ShootLeft = SubResource( 4 )
-anims/ShootRight = SubResource( 2 )
+anims/Shoot = SubResource( 1 )
+anims/ShootDown = SubResource( 2 )
+anims/ShootLeft = SubResource( 3 )
+anims/ShootRight = SubResource( 4 )
 anims/ShootUp = SubResource( 5 )
+
+[node name="DeadLine" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+anims/Det = SubResource( 7 )
+
+[connection signal="area_entered" from="." to="." method="_on_Flame_area_entered"]
+[connection signal="timeout" from="DeadLine" to="." method="_on_DeadLine_timeout"]

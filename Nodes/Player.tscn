@@ -522,7 +522,9 @@ position = Vector2( -0.0701561, 2.37085 )
 scale = Vector2( 0.409, 0.8 )
 polygon = PoolVector2Array( -6.94059, 5.59378, -9.15469, 6.94721, -6.84432, 8.39907, 0.134916, 9.03887, 7.21042, 8.37446, 9.61705, 6.97181, 7.49922, 5.51995, -0.00948079, 5.0524 )
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=[
+"player",
+]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( -0.210464, 5.12122 )
@@ -559,6 +561,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="animation_changed" from="AniPlayer" to="." method="_on_AniPlayer_animation_changed"]
 [connection signal="animation_finished" from="AniPlayer" to="." method="_on_AniPlayer_animation_finished"]
