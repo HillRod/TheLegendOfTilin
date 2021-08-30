@@ -1,18 +1,20 @@
 extends KinematicBody2D
 
-const velocity = 100
-const DAMAGE = 1
+var velocity = 100
+var DAMAGE = 1
 var ani = "WDown"
 var dir = Vector2(0,0) # Vector2.ZERO
-var timer = 0
 var timerlimit = 30
+var timer = 0
 var _life = 2
 var life
 var random
 var flame = preload("res://Nodes/Projectiles/Flame.tscn")
 var esplosion = preload("res://Nodes/Projectiles/Explosion.tscn")
 var cooldown = true
-export var verguiado = false
+var verguiado = false
+var target_player: bool = false
+var target_pos: Vector2 = Vector2.ZERO
 signal gameovercito()
 
 
@@ -22,19 +24,25 @@ func _ready():
 	
 func _physics_process(delta):
 	#random = randi()%20
+	
 	if !verguiado:
-		iaLoop()
-		movLoop()
+		if !target_player: 
+			passiveIA()
+			movLoop()
+		else:
+			refresPlayerTarget()
+			activeIA(target_pos)
 		animLoop()
-	timer+=1
+		timer+=1
 
 func upDificulty(waveN): 
 	_life+= waveN 
 	life = _life
+	#velocity = velocity * waveN
 	if _life>=5: $cooldown.wait_time -= 1
 	
-func iaLoop():
-	if timer>=timerlimit:
+func passiveIA():
+	if timer >= timerlimit:
 		timer = 0
 		var rand = randi()%5
 		match rand:
@@ -48,7 +56,12 @@ func iaLoop():
 				dir = Vector2(-1,0)
 			4: 
 				dir = Vector2.ZERO
-	#yield(get_tree().create_timer(2),"timeout")
+		
+func activeIA(playerPos):
+	var movement = position.direction_to(playerPos) * velocity * 1.3
+	var _move = move_and_slide(movement) 
+	var slide_count = get_slide_count()
+	movement = _move
 
 func shoot(vector):
 	if cooldown:
@@ -124,5 +137,18 @@ func _on_Area2D_body_entered(body):
 			queue_free()
 			emit_signal("gameovercito")
 
+func refresPlayerTarget():
+	target_pos = get_tree().get_nodes_in_group("player")[0].position
+
 func _on_cooldown_timeout():
 	cooldown = false
+
+
+func _on_DetectZone_body_entered(body):
+	if body.is_in_group("player"):
+		target_player = true
+
+
+func _on_DetectZone_body_exited(body):
+	if body.is_in_group("player"):
+		target_player = false
