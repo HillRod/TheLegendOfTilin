@@ -14,5 +14,5 @@ light_mask = 2
 position = Vector2( 1.944, -1.202 )
 rotation = -4.72112
 scale = Vector2( 1.28848, 1 )
-polygon = PoolVector2Array( -1.57431, 2.07198, -1.57431, 4.72363, -11.0319, 4.63525, -11.0319, 2.16037 )
+polygon = PoolVector2Array( -1.57431, 2.07198, -1.57431, 4.72363, -12.7139, 4.29513, -12.6487, 2.71734 )
 disabled = true

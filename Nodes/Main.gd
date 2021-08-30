@@ -3,7 +3,6 @@ extends Node2D
 signal gameovercito
 const Player = preload("res://Nodes/Player.tscn")
 const tronquito = preload("res://Nodes/Tronquito.tscn")
-const lifeUp = preload("res://Nodes/Items/LifeUp.tscn")
 var jugadorl
 var winTimes = 0
 var lose = false
@@ -19,23 +18,21 @@ func _ready():
 func _process(delta):
 	pass# Replace with function body.
 	
-func gameover(tronsition):
-	if get_tree().get_nodes_in_group("enemy").size() <=1:
-		#$CanvasLayer/AnimationPlayer.play("gameover")
-		winTimes+=1
+func gameover():
+	if get_tree().get_nodes_in_group("enemy").size() <=1: ## Siguiente Ola
+		$CanvasLayer/AnimationPlayer.play("gameover")
 		jugadorl.position = Vector2(240,122)
+		jugadorl.set_physics_process(false)
+		yield($CanvasLayer/AnimationPlayer,"animation_finished")
+		jugadorl.set_physics_process(true)
+		iGenerator.getItem("heart",Vector2(240,180),1)
+		winTimes+=1
 		setWaveLabel()
 		initTronquitos()
-	else:
-		var rand = randi() % 4
-		print(rand)
-		if rand == 1:
-			var life = lifeUp.instance()
-			life.position = tronsition
-			$YSort.add_child(life)
 
 func deathcito():
 	$CanvasLayer/AnimationPlayer.play("Death")
+	$CanvasLayer/Button.visible = true
 	lose = true
 func setWaveLabel():
 	$CanvasLayer/WaveLabel.text = str("Wave: ",str(winTimes+1))
@@ -60,6 +57,7 @@ func dropTodo():
 	
 
 func _on_Button_pressed():
+	$CanvasLayer/Button.visible = false
 	if lose:
 		$CanvasLayer/AnimationPlayer.play_backwards("Death")
 		dropTodo()

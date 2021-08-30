@@ -65,7 +65,7 @@ func aniSwitch(type):
 	var anita = str(type,ani)
 	if $AniPlayer.current_animation != anita:
 		$AniPlayer.play(anita)
-		#yield($AniPlayer,"animation_finished")
+		yield($AniPlayer,"animation_finished")
 	
 
 func _on_Area2D_body_entered(body):

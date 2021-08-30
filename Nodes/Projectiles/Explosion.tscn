@@ -120,6 +120,7 @@ tracks/0/keys = {
 texture = ExtResource( 1 )
 hframes = 12
 script = ExtResource( 2 )
+hasItem = true
 
 [node name="Effects2" type="AnimationPlayer" parent="."]
 anims/Det = SubResource( 1 )

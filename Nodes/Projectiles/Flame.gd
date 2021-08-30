@@ -24,7 +24,6 @@ func moveTo(vector):
 
 
 func _on_Flame_area_entered(area):
-	print("ooofff")
 	if area.is_in_group("player"):
 		$AnimationPlayer2.play("Det")
 		yield($AnimationPlayer2,"animation_finished")
