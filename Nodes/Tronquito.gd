@@ -101,15 +101,17 @@ func aniSwitch():
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("putazo"):
+		print("ooooffff")
 		$ColorRect.rect_size.x -= (24/(_life)) * body.DAMAGE
 		life-=body.DAMAGE
 		if life > 0:
 			verguiado = true
-			var knockback = transform.origin-body.transform.origin 
+			var knockback = transform.origin-body.get_parent().transform.origin 
 			move_and_slide(knockback.normalized()*velocity*20,Vector2.ZERO)
 			$AniTronquito.play("Verguiade")
-			yield(get_tree().create_timer(.5),"timeout")
+			yield($AniTronquito,"animation_finished")
 			$Sprite.modulate = Color(1,1,1,1)
+			print("ooofff'nt")
 			verguiado = false
 		else:
 			

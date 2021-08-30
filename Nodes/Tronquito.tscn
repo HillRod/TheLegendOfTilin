@@ -22,7 +22,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=2]
 resource_name = "Verguiade"
 length = 0.5
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:modulate")
 tracks/0/interp = 1

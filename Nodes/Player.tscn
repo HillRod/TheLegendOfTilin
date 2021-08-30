@@ -61,48 +61,36 @@ tracks/2/keys = {
 "values": [ 8 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Espada/CollisionPolygon2D:rotation_degrees")
+tracks/3/path = NodePath("Espada:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.05, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 0.0, -47.5, -90.4 ]
+"values": [ Vector2( 1.2397, -0.587692 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Espada/CollisionPolygon2D:position")
+tracks/4/path = NodePath("Espada:rotation_degrees")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.05, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( -2.284, 5.157 ), Vector2( 1.098, 6.132 ) ]
+"values": [ -167.1 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Espada/CollisionPolygon2D:disabled")
+tracks/5/path = NodePath("Espada:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("Espada:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
@@ -149,52 +137,40 @@ tracks/2/keys = {
 "values": [ 8 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Espada/CollisionPolygon2D:position")
+tracks/3/path = NodePath("Espada:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.05, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( -3.517, 2.996 ), Vector2( -5.593, 0.098 ), Vector2( -2.236, -0.707 ) ]
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Espada/CollisionPolygon2D:rotation_degrees")
+tracks/4/path = NodePath("Espada:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.05, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ -48.9, 1.9, 46.9 ]
+"values": [ Vector2( 0.678454, 3.0603 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Espada/CollisionPolygon2D:disabled")
+tracks/5/path = NodePath("Espada:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("Espada:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -93.6 ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -237,48 +213,36 @@ tracks/2/keys = {
 "values": [ 8 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Espada/CollisionPolygon2D:rotation_degrees")
+tracks/3/path = NodePath("Espada:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.05, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ -134.3, -179.2, -225.2 ]
+"values": [ Vector2( -1.42617, 4.32307 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Espada/CollisionPolygon2D:position")
+tracks/4/path = NodePath("Espada:rotation_degrees")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.05, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.417, 6.724 ), Vector2( 4.076, 6.724 ), Vector2( 4.158, 3.809 ) ]
+"values": [ -273.6 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Espada/CollisionPolygon2D:disabled")
+tracks/5/path = NodePath("Espada:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("Espada:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
@@ -325,43 +289,43 @@ tracks/2/keys = {
 "values": [ 8 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Espada/CollisionPolygon2D:disabled")
+tracks/3/path = NodePath("Espada:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2.36214, 4.60368 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Espada/CollisionPolygon2D:position")
+tracks/4/path = NodePath("Espada:rotation_degrees")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.05, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1.518, 6.946 ), Vector2( 4.657, 2.017 ), Vector2( 1.944, -1.202 ) ]
+"values": [ -363.6 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Espada/CollisionPolygon2D:rotation_degrees")
+tracks/5/path = NodePath("Espada:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.05, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ -180.2, -223.7, -270.5 ]
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Espada:visible")
+tracks/6/path = NodePath("Espada:show_behind_parent")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -561,10 +525,13 @@ material = SubResource( 2 )
 texture = ExtResource( 1 )
 hframes = 8
 vframes = 8
-frame = 32
+frame = 43
 
 [node name="Espada" parent="." instance=ExtResource( 3 )]
 visible = false
+position = Vector2( 2.36214, 4.60368 )
+rotation = -6.34602
+scale = Vector2( 1, 1 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( -0.0701561, 2.37085 )

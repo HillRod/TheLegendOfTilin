@@ -17,6 +17,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_accept") and !isAtacking:
 		aniSwitch("A")
 		isAtacking = true
+		$Espada/AnimationPlayer.play("Swing")
 		yield(get_tree().create_timer(0.2),"timeout")
 		isAtacking = false
 		return
