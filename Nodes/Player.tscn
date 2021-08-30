@@ -513,7 +513,7 @@ material = SubResource( 2 )
 texture = ExtResource( 1 )
 hframes = 8
 vframes = 8
-frame = 43
+frame = 32
 
 [node name="Espada" parent="." instance=ExtResource( 3 )]
 
@@ -563,5 +563,3 @@ __meta__ = {
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
-[connection signal="animation_changed" from="AniPlayer" to="." method="_on_AniPlayer_animation_changed"]
-[connection signal="animation_finished" from="AniPlayer" to="." method="_on_AniPlayer_animation_finished"]

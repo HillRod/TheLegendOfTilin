@@ -27,9 +27,9 @@ func gameover(tronsition):
 		setWaveLabel()
 		initTronquitos()
 	else:
-		var rand = randi() % 4
+		var rand = randi() % 1
 		print(rand)
-		if rand == 1:
+		if rand == 0:
 			var life = lifeUp.instance()
 			life.position = tronsition
 			$YSort.add_child(life)

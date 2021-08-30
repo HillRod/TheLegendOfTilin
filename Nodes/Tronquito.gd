@@ -111,17 +111,13 @@ func _on_Area2D_body_entered(body):
 			$Sprite.modulate = Color(1,1,1,1)
 			verguiado = false
 		else:
-			$CollisionPolygon2D.disabled = true
 			$ColorRect.visible = false
 			$ColorRect2.visible = false
 			set_physics_process(false)
 			$AniTronquito.play("Det")
-			$Area2D/CollisionShape2D.disabled = true
 			yield($AniTronquito,"animation_finished")
 			queue_free()
 			emit_signal("gameovercito",position)
-		
-
 
 func _on_cooldown_timeout():
 	cooldown = false
