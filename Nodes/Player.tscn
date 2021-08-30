@@ -525,13 +525,12 @@ material = SubResource( 2 )
 texture = ExtResource( 1 )
 hframes = 8
 vframes = 8
-frame = 43
+frame = 32
 
 [node name="Espada" parent="." instance=ExtResource( 3 )]
 visible = false
-position = Vector2( 2.36214, 4.60368 )
-rotation = -6.34602
-scale = Vector2( 1, 1 )
+position = Vector2( 1.2397, -0.587692 )
+rotation = -2.91645
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( -0.0701561, 2.37085 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Assets/Overworld.png" type="Texture" id=2]
 
@@ -46,6 +46,9 @@ extents = Vector2( 1.97745, 6.95055 )
 
 [sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 1.99599, 8.01151 )
+
+[sub_resource type="RectangleShape2D" id=16]
+extents = Vector2( 7.96114, 7.83319 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -242,7 +245,8 @@ region_rect = Rect2( 32, 272, 16, 16 )
 [node name="StaticBody2D" type="StaticBody2D" parent="Sprite17"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite17/StaticBody2D"]
-polygon = PoolVector2Array( -1.85842, 7.91141, 7.86445, 7.96397, 7.98298, 1.93825, 2.92619, 1.93825, 2.92204, -3.91183, 0.0470428, -5.84933, -2.92171, -3.72433, -2.88119, 5.7455 )
+position = Vector2( 0, -0.149323 )
+polygon = PoolVector2Array( -1.85842, 7.91141, 7.86445, 7.96397, 7.98298, 1.93825, -2.90978, 1.85636 )
 
 [node name="Sprite18" type="Sprite" parent="."]
 position = Vector2( -0.108597, 86.3746 )
@@ -253,7 +257,7 @@ region_rect = Rect2( 48, 272, 16, 16 )
 [node name="StaticBody2D" type="StaticBody2D" parent="Sprite18"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite18/StaticBody2D"]
-polygon = PoolVector2Array( 1.87459, 7.85947, 2.97702, 5.85148, 2.86308, -4.0302, -0.185165, -6.13244, -2.96823, -3.79479, -2.98401, 1.96045, -7.99424, 1.86124, -7.8898, 7.78073 )
+polygon = PoolVector2Array( 1.87459, 7.85947, 2.95292, 1.11936, -7.99424, 1.86124, -7.8898, 7.78073 )
 
 [node name="Sprite19" type="Sprite" parent="."]
 position = Vector2( 20.8087, 87.3206 )
@@ -320,3 +324,15 @@ region_rect = Rect2( 16, 304, 16, 16 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite24/StaticBody2D"]
 polygon = PoolVector2Array( 2.91589, 5.853, 3.00428, -3.86972, -0.000923157, -5.99104, -2.74096, -3.78133, -3.00613, 1.78714, -7.86749, 1.87553, -7.86749, 5.853 )
+
+[node name="Sprite25" type="Sprite" parent="."]
+position = Vector2( 63.5733, 105.53 )
+texture = ExtResource( 2 )
+hframes = 4
+region_enabled = true
+region_rect = Rect2( 0, 16, 64, 16 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite25"]
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="Sprite25/StaticBody2D"]
+shape = SubResource( 16 )
