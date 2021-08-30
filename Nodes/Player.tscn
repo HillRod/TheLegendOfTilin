@@ -99,6 +99,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id=5]
 length = 0.2
+loop = true
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -513,7 +514,7 @@ material = SubResource( 2 )
 texture = ExtResource( 1 )
 hframes = 8
 vframes = 8
-frame = 43
+frame = 59
 
 [node name="Espada" parent="." instance=ExtResource( 3 )]
 
@@ -563,5 +564,3 @@ __meta__ = {
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
-[connection signal="animation_changed" from="AniPlayer" to="." method="_on_AniPlayer_animation_changed"]
-[connection signal="animation_finished" from="AniPlayer" to="." method="_on_AniPlayer_animation_finished"]

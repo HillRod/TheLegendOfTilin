@@ -10,6 +10,7 @@ var _life = 2
 var life
 var random
 var flame = preload("res://Nodes/Projectiles/Flame.tscn")
+var esplosion = preload("res://Nodes/Projectiles/Explosion.tscn")
 var cooldown = true
 export var verguiado = false
 signal gameovercito(tronsition)
@@ -111,13 +112,12 @@ func _on_Area2D_body_entered(body):
 			$Sprite.modulate = Color(1,1,1,1)
 			verguiado = false
 		else:
-			$CollisionPolygon2D.disabled = true
+			set_physics_process(false)
 			$ColorRect.visible = false
 			$ColorRect2.visible = false
-			set_physics_process(false)
-			$AniTronquito.play("Det")
-			$Area2D/CollisionShape2D.disabled = true
-			yield($AniTronquito,"animation_finished")
+			var explosion = esplosion.instance()
+			explosion.position = position
+			get_parent().add_child(explosion)
 			queue_free()
 			emit_signal("gameovercito",position)
 		
