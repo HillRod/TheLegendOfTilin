@@ -14,6 +14,10 @@ config/name="Test"
 run/main_scene="res://Nodes/Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+iGenerator="*res://Nodes/engine/ItemGenerator.gd"
+
 [display]
 
 window/stretch/mode="2d"

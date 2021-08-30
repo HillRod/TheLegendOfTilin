@@ -4,7 +4,7 @@
 [ext_resource path="res://Nodes/Items/LifeUp.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 11.4408
+radius = 10.8511
 
 [sub_resource type="Animation" id=2]
 resource_name = "default"
@@ -29,7 +29,7 @@ script = ExtResource( 2 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 1.25992, -4.40972 )
+position = Vector2( 0.94494, -4.25223 )
 shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]

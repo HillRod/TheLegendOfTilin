@@ -1,6 +1,7 @@
 extends Area2D
 func _on_LifeUp_body_entered(body):
 	if body.is_in_group("player"):
+		print("+1")
 		if body.vida<body.max_life:
 			body.vida+=1
 			body.lifebar.rect_size.x += 4.8
