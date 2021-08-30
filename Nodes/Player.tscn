@@ -99,7 +99,6 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id=5]
 length = 0.2
-loop = true
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -514,7 +513,7 @@ material = SubResource( 2 )
 texture = ExtResource( 1 )
 hframes = 8
 vframes = 8
-frame = 59
+frame = 32
 
 [node name="Espada" parent="." instance=ExtResource( 3 )]
 
