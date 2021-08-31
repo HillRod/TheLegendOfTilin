@@ -3,12 +3,11 @@
 [ext_resource path="res://Nodes/Weapons/Espada.gd" type="Script" id=1]
 [ext_resource path="res://Assets/weapons.png" type="Texture" id=2]
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 1.72607
 height = 16.5454
 
-[sub_resource type="Animation" id=1]
-resource_name = "Swing"
+[sub_resource type="Animation" id=2]
 length = 0.2
 step = 0.05
 tracks/0/type = "value"
@@ -64,7 +63,7 @@ tracks/3/keys = {
 "putazo",
 ]]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 3
 script = ExtResource( 1 )
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
@@ -72,7 +71,7 @@ light_mask = 2
 position = Vector2( 4.887, -10.43 )
 rotation = 0.787143
 scale = Vector2( 1.28848, 1 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 disabled = true
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -82,4 +81,4 @@ hframes = 4
 vframes = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Swing = SubResource( 1 )
+anims/Swing = SubResource( 2 )

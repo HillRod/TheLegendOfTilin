@@ -11,13 +11,13 @@
 [ext_resource path="res://Assets/heart/3.png" type="Texture" id=9]
 [ext_resource path="res://Assets/shaders/Sparkling.shader" type="Shader" id=10]
 
-[sub_resource type="ShaderMaterial" id=5]
+[sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 10 )
 shader_param/shine_color = Color( 1, 0.843137, 0, 1 )
 shader_param/shine_speed = 5.3
 shader_param/shine_size = 0.01
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 1 ), ExtResource( 9 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 8 ) ],
 "loop": true,
@@ -25,10 +25,10 @@ animations = [ {
 "speed": 8.0
 } ]
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=3]
 radius = 10.2976
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 3.0
 step = 0.05
 tracks/0/type = "value"
@@ -49,22 +49,23 @@ modulate = Color( 1, 1, 1, 0 )
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-material = SubResource( 5 )
+material = SubResource( 1 )
 scale = Vector2( 0.6, 0.6 )
-frames = SubResource( 1 )
+frames = SubResource( 2 )
 animation = "Idle"
+frame = 6
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.180472, -0.693743 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/default = SubResource( 3 )
+anims/default = SubResource( 4 )
 
 [connection signal="body_entered" from="." to="." method="_on_LifeUp_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
