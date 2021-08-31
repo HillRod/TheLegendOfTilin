@@ -15,6 +15,8 @@ var cooldown = true
 var verguiado = false
 var target_player: bool = false
 var target_pos: Vector2 = Vector2.ZERO
+var angle
+var dirs = [Vector2(1,0), Vector2(0,1), Vector2(-1,0), Vector2(0,-1)]#l, u, r, d
 signal gameovercito()
 
 
@@ -58,7 +60,17 @@ func passiveIA():
 				dir = Vector2.ZERO
 		
 func activeIA(playerPos):
+	
 	var movement = position.direction_to(playerPos) * velocity * 1.3
+	angle = rad2deg(movement.angle())
+	if angle<0: angle+=360
+	if angle>= 315: angle-=360
+	var i = 0
+	for x in [0,90,180,270]:
+		if angle >= x-45 and angle < x+45:
+			break
+		i+=1
+	dir = dirs[i]
 	var _move = move_and_slide(movement) 
 	var slide_count = get_slide_count()
 	movement = _move
@@ -114,7 +126,6 @@ func aniSwitch():
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("putazo"):
-		print("ooooffff")
 		$ColorRect.rect_size.x -= (24/(_life)) * body.DAMAGE
 		life-=body.DAMAGE
 		if life > 0:
@@ -124,7 +135,6 @@ func _on_Area2D_body_entered(body):
 			$AniTronquito.play("Verguiade")
 			yield($AniTronquito,"animation_finished")
 			$Sprite.modulate = Color(1,1,1,1)
-			print("ooofff'nt")
 			verguiado = false
 		else:
 			
