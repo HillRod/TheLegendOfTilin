@@ -54,6 +54,8 @@ func initTronquitos():
 		tronquitont.upDificulty(winTimes)
 		$YSort.add_child(tronquitont)
 		tronquitont.connect("gameovercito",self,"gameover")
+
+
 	
 func dropTodo():
 	for x in get_tree().get_nodes_in_group("enemy"):
