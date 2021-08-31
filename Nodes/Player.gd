@@ -72,6 +72,7 @@ func aniSwitch(type):
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("enemy"):
 		damage(body)
+		body.stunActiveIA()
 
 func damage(body):
 	vida-=body.DAMAGE

@@ -14,6 +14,7 @@ var esplosion = preload("res://Nodes/Projectiles/Explosion.tscn")
 var cooldown = true
 var verguiado = false
 var target_player: bool = false
+var isHitting: bool = false
 var target_pos: Vector2 = Vector2.ZERO
 var angle
 var dirs = [Vector2(1,0), Vector2(0,1), Vector2(-1,0), Vector2(0,-1)]#l, u, r, d
@@ -21,12 +22,9 @@ signal gameovercito()
 
 
 func _ready():
-	#random = randi()%20
 	life = _life
 	
 func _physics_process(delta):
-	#random = randi()%20
-	
 	if !verguiado:
 		if !target_player: 
 			passiveIA()
@@ -60,7 +58,6 @@ func passiveIA():
 				dir = Vector2.ZERO
 		
 func activeIA(playerPos):
-	
 	var movement = position.direction_to(playerPos) * velocity * 1.3
 	angle = rad2deg(movement.angle())
 	if angle<0: angle+=360
@@ -71,9 +68,10 @@ func activeIA(playerPos):
 			break
 		i+=1
 	dir = dirs[i]
-	var _move = move_and_slide(movement) 
-	var slide_count = get_slide_count()
-	movement = _move
+	if !isHitting:
+		var _move = move_and_slide(movement) 
+		var slide_count = get_slide_count()
+		movement = _move
 
 func shoot(vector):
 	if cooldown:
@@ -137,8 +135,6 @@ func _on_Area2D_body_entered(body):
 			$Sprite.modulate = Color(1,1,1,1)
 			verguiado = false
 		else:
-			
-			#set_physics_process(false)
 			$ColorRect.visible = false
 			$ColorRect2.visible = false
 			var explosion = esplosion.instance()
@@ -148,11 +144,14 @@ func _on_Area2D_body_entered(body):
 			emit_signal("gameovercito")
 
 func refresPlayerTarget():
-	target_pos = get_tree().get_nodes_in_group("player")[0].position
+	if !isHitting:
+	 target_pos = get_tree().get_nodes_in_group("player")[0].position
+func stunActiveIA():
+	isHitting = true
+	$DetectZone/DetectStunTImer.start()
 
 func _on_cooldown_timeout():
 	cooldown = false
-
 
 func _on_DetectZone_body_entered(body):
 	if body.is_in_group("player"):
@@ -162,3 +161,7 @@ func _on_DetectZone_body_entered(body):
 func _on_DetectZone_body_exited(body):
 	if body.is_in_group("player"):
 		target_player = false
+
+
+func _on_DetectStunTImer_timeout():
+	isHitting = false

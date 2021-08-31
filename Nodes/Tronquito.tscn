@@ -280,6 +280,8 @@ shape = SubResource( 15 )
 position = Vector2( 0.109692, 11.3343 )
 shape = SubResource( 16 )
 
+[node name="DetectStunTImer" type="Timer" parent="DetectZone"]
+
 [node name="ColorRect2" type="ColorRect" parent="."]
 margin_left = -11.8259
 margin_top = -13.118
@@ -309,4 +311,5 @@ autostart = true
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="DetectZone" to="." method="_on_DetectZone_body_entered"]
 [connection signal="body_exited" from="DetectZone" to="." method="_on_DetectZone_body_exited"]
+[connection signal="timeout" from="DetectZone/DetectStunTImer" to="." method="_on_DetectStunTImer_timeout"]
 [connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]
