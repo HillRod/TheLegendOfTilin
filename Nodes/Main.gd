@@ -21,10 +21,12 @@ func startgame():
 	$CanvasLayer/WaveLabel.visible = true
 	initPlayer()
 	initTronquitos()
+	print(get_tree().get_nodes_in_group("enemy").size())
 
 func gameover():
 	if get_tree().get_nodes_in_group("enemy").size() <=1: ## Siguiente Ola
 		$CanvasLayer/AnimationPlayer.play("gameover")
+		$CanvasLayer/ColorRect/wavesound.play()
 		jugadorl.position = Vector2(240,122)
 		jugadorl.set_physics_process(false)
 		yield($CanvasLayer/AnimationPlayer,"animation_finished")
@@ -36,6 +38,7 @@ func gameover():
 
 func deathcito():
 	$CanvasLayer/AnimationPlayer.play("Death")
+	$CanvasLayer/ColorRect2/deathsound.play()
 	$CanvasLayer/Button.visible = true
 	lose = true
 func setWaveLabel():
@@ -58,8 +61,6 @@ func initTronquitos():
 		$YSort.add_child(tronquitont)
 		tronquitont.connect("gameovercito",self,"gameover")
 
-
-	
 func dropTodo():
 	for x in get_tree().get_nodes_in_group("enemy"):
 		x.queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Nodes/font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/overworldTileset.tres" type="TileSet" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Nodes/Main.gd" type="Script" id=4]
 [ext_resource path="res://Nodes/ui/Press Start.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/audio/music/backsound.mp3" type="AudioStream" id=6]
+[ext_resource path="res://Assets/audio/sounds/wavecleared.mp3" type="AudioStream" id=7]
+[ext_resource path="res://Assets/audio/sounds/deathsound.mp3" type="AudioStream" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 120
@@ -127,6 +129,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="wavesound" type="AudioStreamPlayer2D" parent="CanvasLayer/ColorRect"]
+stream = ExtResource( 7 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
 anims/Death = SubResource( 2 )
 anims/gameover = SubResource( 3 )
@@ -173,6 +178,9 @@ __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+
+[node name="deathsound" type="AudioStreamPlayer2D" parent="CanvasLayer/ColorRect2"]
+stream = ExtResource( 8 )
 
 [node name="Button" type="Button" parent="CanvasLayer"]
 visible = false

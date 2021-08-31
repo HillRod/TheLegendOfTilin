@@ -140,8 +140,8 @@ func _on_Area2D_body_entered(body):
 			var explosion = esplosion.instance()
 			explosion.position = position
 			get_parent().add_child(explosion)
-			queue_free()
 			emit_signal("gameovercito")
+			queue_free()
 
 func refresPlayerTarget():
 	if !isHitting:

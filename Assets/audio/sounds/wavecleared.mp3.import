@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/wavecleared.mp3-2367fa421f9f032ca6761a4581f8c4f0.mp3str"
+
+[deps]
+
+source_file="res://Assets/audio/sounds/wavecleared.mp3"
+dest_files=[ "res://.import/wavecleared.mp3-2367fa421f9f032ca6761a4581f8c4f0.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
