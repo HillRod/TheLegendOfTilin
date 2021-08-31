@@ -233,7 +233,7 @@ tracks/0/keys = {
 extents = Vector2( 5.88518, 10 )
 
 [sub_resource type="CircleShape2D" id=16]
-radius = 51.426
+radius = 50.183
 
 [node name="Tronquito" type="KinematicBody2D" groups=[
 "enemy",
@@ -277,7 +277,7 @@ shape = SubResource( 15 )
 [node name="DetectZone" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZone"]
-position = Vector2( 0.109692, 11.3343 )
+position = Vector2( -0.362247, -0.700101 )
 shape = SubResource( 16 )
 
 [node name="DetectStunTImer" type="Timer" parent="DetectZone"]

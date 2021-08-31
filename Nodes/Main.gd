@@ -11,14 +11,17 @@ var lose = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
-	setWaveLabel()
-	initPlayer()
-	initTronquitos()
-	
+	$"CanvasLayer/Press Start".connect("start_pressed",self,"startgame")
 
 func _process(delta):
 	pass# Replace with function body.
-	
+
+func startgame():
+	setWaveLabel()
+	$CanvasLayer/WaveLabel.visible = true
+	initPlayer()
+	initTronquitos()
+
 func gameover():
 	if get_tree().get_nodes_in_group("enemy").size() <=1: ## Siguiente Ola
 		$CanvasLayer/AnimationPlayer.play("gameover")
