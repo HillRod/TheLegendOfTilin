@@ -46,7 +46,7 @@ func setWaveLabel():
 func initPlayer():
 	jugadorl = Player.instance()
 	jugadorl.position = Vector2(240,122)
-	$YSort.add_child(jugadorl)
+	$Scene/YSort.add_child(jugadorl)
 	jugadorl.connect("death",self,"deathcito")
 	
 func initTronquitos():
@@ -58,7 +58,7 @@ func initTronquitos():
 		tronquitont.position = positions[rand].position
 		positions.remove(rand)
 		tronquitont.upDificulty(winTimes)
-		$YSort.add_child(tronquitont)
+		$Scene/YSort.add_child(tronquitont)
 		tronquitont.connect("gameovercito",self,"gameover")
 
 func dropTodo():
